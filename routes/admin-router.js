@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router()
-const {AdminLogin} = require('../model/model');
+const {AdminLogin, User} = require('../model/model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -61,7 +61,7 @@ router.post('/login', async (req, res) => {
 //Get Method
 router.get('/get-users',(req, res,next) => {
 
-    AdminLogin.find({}).then(response => {
+    User.find({}).then(response => {
 
         res.send(response);
 
