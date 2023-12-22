@@ -29,6 +29,18 @@ router.post('/upload',upload.single('image'),(req,res) => {
     res.send(apiResponse({message: 'File uploaded successfully.', image}));
 })
 
+router.post('/data',(req,res) => {
+
+    console.log(req.body);
+
+    res.status(200).json({
+        success : true,
+        message : "success",
+        user : user
+    });
+
+});
+
 
 //Signup Method
 router.post('/signup', async (req, res) => {
@@ -88,6 +100,7 @@ router.post('/user-login',async (req,res) => {
             if(result)
             {
                 const userData = {
+                    id : user._id,
                     username : user.username,
                     email : user.email
                 }
